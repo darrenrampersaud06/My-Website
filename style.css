@@ -21,7 +21,6 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
   --nav-h: 76px;
   --ticker-h: 46px;
-  --frame-w: clamp(22px, 5vw, 34px);
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
@@ -92,50 +91,23 @@ p{ margin: 0; }
   height: 100svh;
   z-index: 300;
   pointer-events: none;
+  border-style: solid;
+  border-width: clamp(22px, 5vw, 34px);
+  border-color: transparent;
+  border-image: url("border-frame.png?v=3") 22% round;
+  /* border-frame.png now has a real alpha channel baked in (black
+     background keyed out to transparent, red linework kept opaque).
+     It used to be an opaque black+red PNG relying on
+     `mix-blend-mode: screen` to knock the black out at render time —
+     but mix-blend-mode on a position:fixed element is a known WebKit/
+     iOS Safari bug (the fixed element gets promoted to its own
+     compositing layer, and blending across layers silently fails),
+     which is why the border rendered fine on desktop but vanished
+     completely on iPhone/iPad. Baking transparency into the image
+     itself removes the dependency on blend-mode compositing working
+     at all, so it's reliable everywhere. */
   opacity: .95;
 }
-
-/* The frame used to be a single `border-image` on this element. Even after
-   baking real alpha transparency into border-frame.png (fixing the
-   mix-blend-mode/position:fixed compositing bug), border-image itself still
-   didn't render on iOS Safari for a position:fixed element. Instead of
-   border-image, each corner and edge is now its own piece with a plain
-   background-image — background-image on fixed elements is rock solid
-   across Safari/Chrome/Firefox, desktop and mobile. Each piece is cropped
-   directly from the original artwork so the look is unchanged. */
-.pf-corner, .pf-edge{
-  position: absolute;
-  background-repeat: no-repeat;
-}
-.pf-corner{
-  width: var(--frame-w);
-  height: var(--frame-w);
-  background-size: 100% 100%;
-}
-.pf-tl{ top: 0; left: 0; background-image: url("border-frame-tl.png?v=1"); }
-.pf-tr{ top: 0; right: 0; background-image: url("border-frame-tr.png?v=1"); }
-.pf-bl{ bottom: 0; left: 0; background-image: url("border-frame-bl.png?v=1"); }
-.pf-br{ bottom: 0; right: 0; background-image: url("border-frame-br.png?v=1"); }
-
-.pf-edge-top, .pf-edge-bottom{
-  left: var(--frame-w);
-  right: var(--frame-w);
-  height: var(--frame-w);
-  background-repeat: repeat-x;
-  background-size: auto var(--frame-w);
-}
-.pf-edge-top{ top: 0; background-image: url("border-frame-edge-top.png?v=1"); }
-.pf-edge-bottom{ bottom: 0; background-image: url("border-frame-edge-bottom.png?v=1"); }
-
-.pf-edge-left, .pf-edge-right{
-  top: var(--frame-w);
-  bottom: var(--frame-w);
-  width: var(--frame-w);
-  background-repeat: repeat-y;
-  background-size: var(--frame-w) auto;
-}
-.pf-edge-left{ left: 0; background-image: url("border-frame-edge-left.png?v=1"); }
-.pf-edge-right{ right: 0; background-image: url("border-frame-edge-right.png?v=1"); }
 
 /* ============================================================
    NAVBAR
