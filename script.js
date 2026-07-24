@@ -11,6 +11,29 @@ if (track){
 }
 
 /* ==========================================================
+   MOBILE HAMBURGER NAV
+   ========================================================== */
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (navToggle && navLinks){
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    navToggle.classList.toggle("open", isOpen);
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // tapping a link closes the menu, like a normal mobile nav
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      navToggle.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* ==========================================================
    Restrained fade-up reveal for content sections
    ========================================================== */
 const revealTargets = document.querySelectorAll(
@@ -58,12 +81,13 @@ about: () =>
   "explores robotics, and creates experiences like this site.",
 
 skills: () =>
-  "Java · Python · JavaScript · HTML & CSS · UML/OOAD · " +
-  "Computer Architecture · Networking · Git · Linux · SQL",
+  "Java · C · Python · JavaScript · HTML & CSS · PHP · SQL · " +
+  "UML/OOAD · Nand2Tetris HDL · Git · Linux · OpenGL",
 
 certs: () =>
   "Professional & Technical\n" +
   "  Networking Basics — Cisco (ongoing)\n" +
+  "  Python Essentials 1 — Cisco Networking Academy (ongoing)\n" +
   "  Getting Started with Cisco Packet Tracer — Cisco\n" +
   "  Enterprise Design Thinking Practitioner — IBM\n" +
   "Academic\n" +
@@ -74,9 +98,10 @@ certs: () =>
 
 projects: () =>
   "Web Development\n" +
-  "  01 Portfolio Website — this site, built from scratch\n" +
+  "  01 Portfolio Website — this site, self-hosted on a Raspberry Pi 4\n" +
+  "     via Nginx + a Cloudflare Tunnel\n" +
   "Robotics & Embedded Systems\n" +
-  "  01 Elegoo Smart Robot Car V4.0 — robotics + embedded systems\n" +
+  "  01 Elegoo Smart Robot Car V4.0 — finished, driving and sensing again\n" +
   "Systems & Networking\n" +
   "  01 Raspberry Pi Voice Companion — local AI + hosting\n" +
   "Cyber Security\n" +
@@ -84,7 +109,7 @@ projects: () =>
   "Scroll down to the Projects section for links.",
 
 contact: () =>
-  "Email: your.email@example.com\nGitHub: github.com/your-github\n" +
+  "Email: darrenrampersaud06@gmail.com\nGitHub: github.com/darrenrampersaud06\n" +
   "LinkedIn: linkedin.com/in/your-linkedin",
 
 whoami: () => "guest@night-market — scroll around, explore, and say hi.",
