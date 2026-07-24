@@ -95,7 +95,12 @@ p{ margin: 0; }
   border-width: clamp(22px, 5vw, 34px);
   border-color: transparent;
   border-image: url("border-frame.png") 22% round;
-  mix-blend-mode: screen;
+  /* TEMP DIAGNOSTIC: mix-blend-mode disabled to test whether it's the
+     cause of the border being invisible on iPhone. Original image,
+     nothing else changed. If the border shows up now (even if it looks
+     like a plain dark rectangle instead of blending into the page),
+     that confirms mix-blend-mode is the actual problem, and we fix it
+     properly from there. */
   opacity: .95;
 }
 
