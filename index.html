@@ -6,8 +6,14 @@
 <title>Darren — Computer Science Student</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Rubik:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<!-- Monoton (the big neon display font) uses display=optional: it's decorative
+     only, and swapping it in after first paint was the main cause of the page
+     "jumping" — the hero title and everything below it reflowed when the font
+     arrived, since the fallback font has very different letter metrics. Rubik/
+     JetBrains Mono keep display=swap since their body-text reflow is minor. -->
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -17,9 +23,11 @@
 <nav class="navbar">
   <a href="#top" class="nav-logo">達倫<span class="latin">Darren</span><span class="corner-glyph" aria-hidden="true"><span class="corner-glyph-track"><b>疾</b><b>風</b><b>迅</b><b>雷</b><b>夜</b><b>龍</b></span></span></a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-    <span class="nav-toggle-bar"></span>
-    <span class="nav-toggle-bar"></span>
-    <span class="nav-toggle-bar"></span>
+    <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <line class="nav-toggle-line line-1" x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line class="nav-toggle-line line-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line class="nav-toggle-line line-3" x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
   </button>
 
   <div class="nav-links" id="navLinks">
@@ -316,6 +324,6 @@
   <p class="footer-year">© <span id="year"></span> Darren</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>

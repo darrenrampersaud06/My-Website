@@ -168,10 +168,8 @@ p{ margin: 0; }
 /* hamburger toggle — hidden on desktop, shown below 768px */
 .nav-toggle{
   display: none;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
   width: 34px;
   height: 30px;
   padding: 0;
@@ -184,17 +182,21 @@ p{ margin: 0; }
   z-index: 210;
 }
 .nav-toggle:focus{ outline: none; }
-.nav-toggle-bar{
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--neon-cyan);
-  box-shadow: 0 0 6px rgba(34,230,255,.7);
+.nav-toggle-icon{
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+}
+.nav-toggle-line{
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 4px rgba(34,230,255,.7));
+  transform-box: fill-box;
+  transform-origin: center;
   transition: transform .3s var(--ease), opacity .3s var(--ease);
 }
-.nav-toggle.open .nav-toggle-bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open .nav-toggle-bar:nth-child(2){ opacity: 0; }
-.nav-toggle.open .nav-toggle-bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+.nav-toggle.open .line-1{ transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open .line-2{ opacity: 0; }
+.nav-toggle.open .line-3{ transform: translateY(-6px) rotate(-45deg); }
 
 @media (max-width: 768px){
   :root{ --nav-h: 60px; }
@@ -557,9 +559,10 @@ section{
   filter: blur(2px);
   transition: opacity .4s;
   animation: card-spin 4s linear infinite;
+  animation-play-state: paused;
   pointer-events: none;
 }
-.project-card:hover::before{ opacity: .85; }
+.project-card:hover::before{ opacity: .85; animation-play-state: running; }
 
 @keyframes card-spin{
   to{ filter: blur(2px) hue-rotate(360deg); }
