@@ -17,8 +17,19 @@
 </head>
 <body>
 
-<!-- decorative ornate frame around the whole page -->
-<div class="page-frame" aria-hidden="true"></div>
+<!-- decorative ornate frame around the whole page — built from 8 background-image
+     pieces (4 corners + 4 repeating edges) instead of border-image, which Safari
+     fails to render reliably on a position:fixed element -->
+<div class="page-frame" aria-hidden="true">
+  <span class="pf-corner pf-tl"></span>
+  <span class="pf-corner pf-tr"></span>
+  <span class="pf-corner pf-bl"></span>
+  <span class="pf-corner pf-br"></span>
+  <span class="pf-edge pf-edge-top"></span>
+  <span class="pf-edge pf-edge-bottom"></span>
+  <span class="pf-edge pf-edge-left"></span>
+  <span class="pf-edge pf-edge-right"></span>
+</div>
 
 <nav class="navbar">
   <a href="#top" class="nav-logo">達倫<span class="latin">Darren</span><span class="corner-glyph" aria-hidden="true"><span class="corner-glyph-track"><b>疾</b><b>風</b><b>迅</b><b>雷</b><b>夜</b><b>龍</b></span></span></a>
