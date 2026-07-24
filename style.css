@@ -94,13 +94,18 @@ p{ margin: 0; }
   border-style: solid;
   border-width: clamp(22px, 5vw, 34px);
   border-color: transparent;
-  border-image: url("border-frame.png") 22% round;
-  /* TEMP DIAGNOSTIC: mix-blend-mode disabled to test whether it's the
-     cause of the border being invisible on iPhone. Original image,
-     nothing else changed. If the border shows up now (even if it looks
-     like a plain dark rectangle instead of blending into the page),
-     that confirms mix-blend-mode is the actual problem, and we fix it
-     properly from there. */
+  border-image: url("border-frame.png?v=3") 22% round;
+  /* border-frame.png now has a real alpha channel baked in (black
+     background keyed out to transparent, red linework kept opaque).
+     It used to be an opaque black+red PNG relying on
+     `mix-blend-mode: screen` to knock the black out at render time —
+     but mix-blend-mode on a position:fixed element is a known WebKit/
+     iOS Safari bug (the fixed element gets promoted to its own
+     compositing layer, and blending across layers silently fails),
+     which is why the border rendered fine on desktop but vanished
+     completely on iPhone/iPad. Baking transparency into the image
+     itself removes the dependency on blend-mode compositing working
+     at all, so it's reliable everywhere. */
   opacity: .95;
 }
 
