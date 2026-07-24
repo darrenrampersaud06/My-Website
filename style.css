@@ -94,15 +94,8 @@ p{ margin: 0; }
   border-style: solid;
   border-width: clamp(22px, 5vw, 34px);
   border-color: transparent;
-  /* border-frame-alpha.png has a real alpha channel baked in (the
-     original border-frame.png was fully opaque with a black background,
-     faked transparent via mix-blend-mode:screen — iOS Safari has a known
-     bug where mix-blend-mode fails to composite against page content
-     behind a position:fixed element, so the "transparent" black just
-     rendered as an opaque near-black rectangle, making the whole border
-     disappear against the page's own near-black background). Real alpha
-     transparency needs no blend mode and works everywhere. */
-  border-image: url("border-frame-alpha.png") 22% round;
+  border-image: url("border-frame.png") 22% round;
+  mix-blend-mode: screen;
   opacity: .95;
 }
 
