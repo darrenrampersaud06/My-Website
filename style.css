@@ -29,12 +29,6 @@ html{ scroll-behavior: smooth; font-size: 18px; scroll-padding-top: calc(var(--n
 body{
   margin: 0;
   background-color: var(--bg);
-  background-image:
-    linear-gradient(180deg, rgba(3,1,2,.35) 0%, rgba(3,1,2,.75) 45%, #030102 100%),
-    url("bg-texture.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 400;
@@ -42,14 +36,29 @@ body{
   overflow-x: hidden;
 }
 
-/* `background-attachment: fixed` is unreliable on mobile browsers
-   (iOS Safari and many Android WebViews can fail to paint it at all) —
-   fall back to a normal scrolling background below desktop widths. */
-@media (max-width: 768px){
-  body{ background-attachment: scroll; }
+/* Background lives on its own fixed, viewport-sized layer instead of
+   `background-attachment: fixed` on body — that property is unreliable
+   on mobile browsers (iOS Safari / many Android WebViews can fail to
+   paint it), and toggling to `scroll` on mobile instead makes
+   `background-size: cover` scale against the full page height rather
+   than the viewport, badly distorting the texture on a long page. A
+   position:fixed layer sized with inset:0 is always viewport-sized and
+   paints identically on every device. */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(180deg, rgba(3,1,2,.35) 0%, rgba(3,1,2,.75) 45%, #030102 100%),
+    url("bg-texture.png");
+  background-size: cover;
+  background-position: center;
 }
 
 a{ color: inherit; text-decoration: none; }
+a, button{ -webkit-tap-highlight-color: transparent; }
 ul{ list-style: none; margin: 0; padding: 0; }
 h1, h2, h3{ margin: 0; }
 p{ margin: 0; }
@@ -65,7 +74,8 @@ p{ margin: 0; }
   z-index: 300;
   pointer-events: none;
   border-style: solid;
-  border-width: clamp(14px, 3vw, 34px);
+  border-width: clamp(22px, 5vw, 34px);
+  border-color: transparent;
   border-image: url("border-frame.png") 22% round;
   mix-blend-mode: screen;
   opacity: .95;
@@ -167,9 +177,13 @@ p{ margin: 0; }
   padding: 0;
   background: transparent;
   border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   z-index: 210;
 }
+.nav-toggle:focus{ outline: none; }
 .nav-toggle-bar{
   display: block;
   width: 100%;
@@ -183,6 +197,12 @@ p{ margin: 0; }
 .nav-toggle.open .nav-toggle-bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 768px){
+  :root{ --nav-h: 60px; }
+
+  .navbar{ padding: 0 20px; }
+  .nav-logo{ font-size: .92rem; gap: 6px; }
+  .nav-logo .latin{ font-size: .72rem; }
+
   .nav-toggle{ display: flex; }
 
   .nav-links{
@@ -209,7 +229,7 @@ p{ margin: 0; }
   }
   .nav-links a{
     width: 100%;
-    padding: 18px 32px;
+    padding: 14px 32px;
     text-align: center;
     border-bottom: 1px solid var(--line);
   }
