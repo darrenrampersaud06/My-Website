@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk 'NR==34{print substr\\($0, length\\($0\\)-30\\)}' \"c:/Users/riazu/Downloads/files \\(1\\)/style.css\")",
+      "Bash(awk 'NR==62{print substr\\($0, length\\($0\\)-30\\)}' \"c:/Users/riazu/Downloads/files \\(1\\)/style.css\")"
+    ]
+  }
+}

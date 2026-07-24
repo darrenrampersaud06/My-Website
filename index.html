@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darren — Computer Science Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Rubik:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- decorative ornate frame around the whole page -->
+<div class="page-frame" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <a href="#top" class="nav-logo">達倫<span class="latin">Darren</span><span class="corner-glyph" aria-hidden="true"><span class="corner-glyph-track"><b>疾</b><b>風</b><b>迅</b><b>雷</b><b>夜</b><b>龍</b></span></span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certs</a>
+    <a href="#terminal">Terminal</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+
+
+<div class="ticker ticker-top">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="t-red">COMPUTER SCIENCE STUDENT</span>
+    <span class="t-cyan">JAVA</span>
+    <span class="t-yellow">PYTHON</span>
+    <span class="t-pink">HTML/CSS</span>
+    <span class="t-red">JAVASCRIPT</span>
+    <span class="t-cyan">PHP</span>
+    <span class="t-yellow">NETWORKING</span>
+    <span class="t-pink">OPEN TO WORK</span>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero" id="top">
+    <img src="dragon.png" alt="" class="hero-dragon" aria-hidden="true">
+    <p class="eyebrow">歡迎 · welcome</p>
+    <h1 class="neon-title">
+      <span class="sign sign-red" data-flicker>DARREN</span>
+      <span class="sign sign-cyan small" data-flicker>造 RAMPERSAUD 造</span>
+    </h1>
+    <p class="hero-sub">
+    Computer Science student working across Java, Python, web development, and networking. I spend 
+    most nights building personal projects, experimenting with robotics, 
+    and creating websites like this one.
+    </p>
+  </section>
+
+  <section class="about" id="about">
+    <p class="tag tag-cyan">關於 / about</p>
+    <div class="about-grid">
+      <p>
+     I'm a Computer Science student who cares as much about how something 
+     feels to use as whether it works well. My studies cover Java, UML and 
+     Object Oriented Analysis and Design, computer architecture, and networking, 
+     giving me a strong foundation in software development, system design, and 
+     building practical solutions. I enjoy turning ideas into projects, exploring 
+     new technologies, and creating experiences that are both functional and enjoyable
+     to use.
+      </p>
+      <p>
+        Outside of class I build personal projects because I want to see if I can:
+        3D web experiments, a robot car I've been bringing back to life, and a
+        Raspberry Pi set up as a local AI voice companion.
+      </p>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <p class="tag tag-yellow">技能 / skills</p>
+    <ul class="skill-grid">
+      <li class="glow-red">Java</li>
+      <li class="glow-cyan">C</li>
+      <li class="glow-yellow">Python</li>
+      <li class="glow-pink">JavaScript</li>
+      <li class="glow-red">HTML &amp; CSS</li>
+      <li class="glow-cyan">UML / OOAD</li>
+      <li class="glow-yellow">MIPS Assembly</li>
+      <li class="glow-pink">Nand2Tetris HDL</li>
+      <li class="glow-red">Git</li>
+      <li class="glow-cyan">Linux</li>
+      <li class="glow-yellow">OpenGL</li>
+    </ul>
+  </section>
+
+  <section class="certifications" id="certifications">
+    <p class="tag tag-pink">證書 / certifications</p>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-cyan">Professional &amp; Technical</h3>
+      <div class="cert-grid">
+
+        <article class="cert-card" data-glow="cyan">
+          <span class="project-status status-progress">Ongoing</span>
+          <h3>Networking Basics</h3>
+          <p class="cert-issuer">Cisco</p>
+        </article>
+
+        <article class="cert-card" data-glow="cyan">
+          <span class="project-status status-live">Completed</span>
+          <h3>Getting Started with Cisco Packet Tracer</h3>
+          <p class="cert-issuer">Cisco</p>
+        </article>
+
+        <article class="cert-card" data-glow="cyan">
+          <span class="project-status status-live">Completed</span>
+          <h3>Enterprise Design Thinking Practitioner</h3>
+          <p class="cert-issuer">IBM</p>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-yellow">Academic</h3>
+      <div class="cert-grid">
+
+        <article class="cert-card" data-glow="yellow">
+          <span class="project-status status-live">Completed</span>
+          <h3>Caribbean Secondary Education Certificate</h3>
+          <p class="cert-issuer">CXC &middot; Completed Secondary Education</p>
+        </article>
+
+        <article class="cert-card" data-glow="yellow">
+          <span class="project-status status-live">Completed</span>
+          <h3>Certificate of Business Studies</h3>
+          <p class="cert-issuer">New Campbellville Secondary School</p>
+        </article>
+
+        <article class="cert-card" data-glow="yellow">
+          <span class="project-status status-distinction">Distinction</span>
+          <h3>Certificate of High Standard of Excellence in EDPM</h3>
+          <p class="cert-issuer">Passed with Distinction</p>
+        </article>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- interactive terminal -->
+  <section class="terminal-section" id="terminal">
+    <p class="tag tag-pink">終端 / terminal</p>
+    <div class="terminal-window" id="terminalWindow">
+      <div class="terminal-bar">
+        <span class="term-dot dot-red"></span>
+        <span class="term-dot dot-yellow"></span>
+        <span class="term-dot dot-green"></span>
+        <span class="term-title">darren@night-market:~</span>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <p class="term-line">Welcome. Type <span class="term-cmd">help</span> and press Enter to look around.</p>
+      </div>
+      <div class="terminal-input-row">
+        <span class="prompt">➜</span>
+        <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="type a command..." aria-label="Terminal command input">
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <p class="tag tag-cyan">作品 / projects</p>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-red">Web Development</h3>
+      <div class="project-grid">
+
+        <article class="project-card" data-glow="red">
+          <span class="project-index">01</span>
+          <span class="project-status status-live">Live</span>
+          <h3>Portfolio Website</h3>
+          <p>This site — a from-scratch build with HTML, CSS and JavaScript, no
+            frameworks, styled after a night market of neon signs.</p>
+          <div class="project-tech">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-cyan">Robotics &amp; Embedded Systems</h3>
+      <div class="project-grid">
+
+        <article class="project-card" data-glow="cyan">
+          <span class="project-index">01</span>
+          <span class="project-status status-progress">In Progress</span>
+          <h3>Elegoo Smart Robot Car V4.0</h3>
+          <p>Getting an Uno-R3-clone robot car fully driving and sensing again —
+            wiring fixes, firmware, and clone-board quirks.</p>
+          <div class="project-tech">
+            <span>Arduino</span><span>C++</span><span>Electronics</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-yellow">Systems &amp; Networking</h3>
+      <div class="project-grid">
+
+        <article class="project-card" data-glow="yellow">
+          <span class="project-index">01</span>
+          <span class="project-status status-live">Active</span>
+          <h3>Raspberry Pi Voice Companion</h3>
+          <p>A Raspberry Pi 4B running a local AI voice companion, and hosting
+            projects like this one over Nginx.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Linux</span><span>Nginx</span><span>Networking</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="category-block">
+      <h3 class="category-heading category-heading-pink">Cyber Security</h3>
+      <div class="project-grid">
+
+        <article class="project-card project-card-placeholder" data-glow="pink">
+          <span class="project-index">01</span>
+          <span class="project-status status-planned">Planned</span>
+          <h3>New Build In Progress</h3>
+          <p>Currently digging into security fundamentals — CTFs, network defense,
+            and secure coding practices. First write-up lands here soon.</p>
+        </article>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="tag tag-yellow">聯絡 / contact</p>
+    <div class="contact-card">
+      <div class="contact-main">
+        <h2 class="sign sign-pink" data-flicker>LET'S TALK</h2>
+        <p class="contact-lead">Got a project, an internship, or a question about MIPS registers? Reach out — I usually reply within a day or two.</p>
+        <a href="mailto:your.email@example.com" class="mega-link">
+          <svg class="mega-link-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5V17a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.5M3 6.5A2 2 0 0 1 5 4.5h14a2 2 0 0 1 2 2M3 6.5l9 6.5 9-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          darrenrampersaud06@gmail.com
+        </a>
+      </div>
+
+      <div class="contact-links">
+        <a href="https://github.com/your-github" target="_blank" rel="noopener" class="contact-row" data-social="github">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56v-2.17c-3.2.7-3.88-1.35-3.88-1.35-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <span class="contact-row-label">GitHub</span>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener" class="contact-row" data-social="linkedin">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.94 8.59 23 11.02 23 14.66V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21h-4V9Z"/></svg>
+          <span class="contact-row-label">LinkedIn</span>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <a href="https://twitter.com/your-handle" target="_blank" rel="noopener" class="contact-row" data-social="twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.2l-5.6-7.3L4 22H1l8.1-9.3L1 2h7.4l5.1 6.7L18.9 2Zm-1.3 18h2L7.5 4h-2.1l12.2 16Z"/></svg>
+          <span class="contact-row-label">Twitter</span>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <a href="/resume-placeholder.pdf" class="contact-row" data-social="resume">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 2v6h5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span class="contact-row-label">Résumé</span>
+          <span class="contact-row-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-cross">
+    <blockquote class="divider-quote divider-quote-left">
+      <p>“I can do all things through Christ which strengtheneth me.”</p>
+      <cite>Paul the Apostle &middot; Philippians 4:13</cite>
+    </blockquote>
+
+    <img src="cross.png" alt="" class="spinning-cross" aria-hidden="true">
+
+    <blockquote class="divider-quote divider-quote-right">
+      <p>“Trust in the LORD with all thine heart; and lean not unto thine own understanding.”</p>
+      <cite>Solomon &middot; Proverbs 3:5</cite>
+    </blockquote>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Built with HTML, CSS &amp; JavaScript.</p>
+  <p class="footer-year">© <span id="year"></span> Darren</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
