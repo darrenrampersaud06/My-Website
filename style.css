@@ -423,6 +423,7 @@ section{
 }
 .cert-card{
   position: relative;
+  display: flow-root;
   padding: 24px 24px;
   border-radius: 14px;
   background: rgba(245,233,234,.03);
@@ -896,4 +897,16 @@ section{
   .corner-glyph-track{ animation: none; }
   .hero-dragon{ animation: none; }
   .spinning-cross{ animation: none; }
+}
+/* status pill pinned to the top-right of cert cards,
+   so it sits beside the title instead of above it */
+.cert-card .project-status{
+  float: none;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  margin: 0;
+}
+.cert-card h3{
+  padding-right: 96px;
 }
