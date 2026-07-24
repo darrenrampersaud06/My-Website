@@ -47,12 +47,23 @@ body{
 body::before{
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* `inset: 0` stretches to the *current* viewport, which mobile browsers
+     keep resizing as the address bar collapses/expands on scroll — that
+     made this whole layer (and its background-size: cover) rescale a
+     little on every scroll, seen as a "zoom in and out" jitter. Sizing
+     to the small-viewport height instead keeps it constant regardless of
+     the address bar's state. Plain vh is a fallback for older browsers,
+     which will keep the old (minor) resize behavior. */
+  height: 100vh;
+  height: 100svh;
   z-index: 0;
   background-color: var(--bg);
   background-image:
     linear-gradient(180deg, rgba(3,1,2,.35) 0%, rgba(3,1,2,.75) 45%, #030102 100%),
-    url("bg-texture.png");
+    url("bg-texture.png?v=2");
   background-size: cover;
   background-position: center;
 }
@@ -70,13 +81,20 @@ p{ margin: 0; }
    ============================================================ */
 .page-frame{
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* same fixed-to-the-address-bar issue as body::before above — pin this
+     to the small-viewport height so the ornate border doesn't rescale
+     every time the mobile toolbar shows/hides during scroll. */
+  height: 100vh;
+  height: 100svh;
   z-index: 300;
   pointer-events: none;
   border-style: solid;
   border-width: clamp(22px, 5vw, 34px);
   border-color: transparent;
-  border-image: url("border-frame.png") 22% round;
+  border-image: url("border-frame.png?v=2") 22% round;
   mix-blend-mode: screen;
   opacity: .95;
 }
