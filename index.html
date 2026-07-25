@@ -6,12 +6,12 @@
 <title>Darren — Computer Science Student</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Monoton (the big neon display font) uses display=optional: it's decorative
-     only, and swapping it in after first paint was the main cause of the page
-     "jumping" — the hero title and everything below it reflowed when the font
-     arrived, since the fallback font has very different letter metrics. Rubik/
-     JetBrains Mono keep display=swap since their body-text reflow is minor. -->
-<link href="https://fonts.googleapis.com/css2?family=Monoton&display=optional" rel="stylesheet">
+<!-- Monoton (the big neon display font) previously used display=optional to
+     avoid a reflow when it swapped in, but optional gives it no real swap
+     window — on a slow/cold-cache load the browser commits to the fallback
+     font for good and Monoton never appears. display=swap trades a brief
+     reflow for the font reliably showing up. -->
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=5">
 </head>
