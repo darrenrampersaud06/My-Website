@@ -20,7 +20,7 @@
 
   --ease: cubic-bezier(.22, 1, .36, 1);
   --nav-h: 76px;
-  --ticker-h: 46px;
+  --ticker-h: 66px;
   --frame-w: clamp(22px, 5vw, 34px);
 }
 
@@ -177,18 +177,34 @@ p{ margin: 0; }
   100% { transform: translateY(0); }
 }
 
-.nav-links{ display: flex; gap: 26px; }
+.nav-links{ display: flex; gap: 10px; }
+/* button.png had a flattened checkerboard baked in instead of real
+   transparency (same issue as red-line.png) — nav-button.png is a
+   processed, tightly-cropped copy with the checkerboard keyed out to
+   alpha, so each nav link can sit on it like a real glossy sign button */
 .nav-links a{
-  font-size: .82rem;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: .04em;
-  transition: color .25s, text-shadow .25s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 40px;
+  background-image: url("/files/nav-button.png?v=1");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .74rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #ffeef0;
+  text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 0 6px rgba(255,255,255,.2);
+  transition: transform .2s var(--ease), filter .25s;
 }
 .nav-links a:hover{
-  color: var(--neon-cyan);
-  text-shadow: 0 0 8px rgba(34,230,255,.8);
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(255,30,67,.7));
 }
+.nav-links a:active{ transform: translateY(0) scale(.96); }
 
 /* hamburger toggle — hidden on desktop, shown below 768px */
 .nav-toggle{
@@ -238,29 +254,28 @@ p{ margin: 0; }
     left: 0;
     right: 0;
     flex-direction: column;
-    gap: 0;
+    gap: 12px;
     background: rgba(3,1,2,.97);
     border-bottom: 1px solid var(--line);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transform: translateY(-8px);
-    transition: max-height .4s var(--ease), opacity .3s var(--ease), transform .3s var(--ease);
+    padding: 0 20px;
+    transition: max-height .4s var(--ease), opacity .3s var(--ease), transform .3s var(--ease), padding .4s var(--ease);
     pointer-events: none;
   }
   .nav-links.open{
-    max-height: 400px;
+    max-height: 460px;
     opacity: 1;
     transform: translateY(0);
+    padding: 16px 20px 24px;
     pointer-events: auto;
   }
   .nav-links a{
     width: 100%;
-    padding: 14px 32px;
-    text-align: center;
-    border-bottom: 1px solid var(--line);
+    height: 48px;
   }
-  .nav-links a:last-child{ border-bottom: none; }
 }
 
 /* ============================================================
@@ -703,9 +718,7 @@ section{
   width: 100%;
   overflow: hidden;
   background: rgba(5, 1, 2, .92);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 14px 0;
+  padding: 20px 0;
 }
 .ticker-top{
   position: relative;
@@ -714,16 +727,35 @@ section{
   right: 0;
   z-index: 150;
 }
+/* glowing neon tube outlining the ticker bar, replacing the old flat
+   1px border — red-line.png had a flattened checkerboard baked in
+   instead of real transparency, so red-line-glow.png is a processed
+   copy with the checkerboard keyed out to alpha */
+.ticker::before, .ticker::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 13px;
+  background-image: url("/files/red-line-glow.png?v=1");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: neon-flicker 6.5s linear infinite;
+}
+.ticker::before{ top: 0; }
+.ticker::after{ bottom: 0; }
 .ticker-track{
   display: flex;
   align-items: center;
   gap: 56px;
   white-space: nowrap;
   width: max-content;
-  animation: ticker-scroll 26s linear infinite;
-  font-weight: 600;
-  font-size: .8rem;
-  letter-spacing: .1em;
+  animation: ticker-scroll 26s linear infinite, neon-flicker 6.5s linear infinite;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: .04em;
 }
 .ticker-track span{ padding-right: 56px; }
 .ticker-track .t-red{ color: var(--neon-red); text-shadow: 0 0 6px var(--neon-red), 0 0 14px rgba(255,30,67,.6); }
@@ -910,6 +942,7 @@ section{
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .ticker-track{ animation: none; }
+  .ticker::before, .ticker::after{ animation: none; opacity: 1; }
   .sign[data-flicker]{ opacity: 1; }
   .corner-glyph-track{ animation: none; }
   .hero-dragon{ animation: none; }
