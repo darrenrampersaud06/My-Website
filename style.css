@@ -21,6 +21,7 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
   --nav-h: 76px;
   --ticker-h: 46px;
+  --frame-w: clamp(22px, 5vw, 34px);
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
@@ -72,12 +73,46 @@ p{ margin: 0; }
   height: 100svh;
   z-index: 300;
   pointer-events: none;
-  border-style: solid;
-  border-width: clamp(22px, 5vw, 34px);
-  border-color: transparent;
-  border-image: url("/files/border-frame.png?v=3") 22% round;
   opacity: .95;
 }
+
+/* border-image on a position:fixed element doesn't render reliably on iOS
+   Safari (confirmed by testing — see git history), so the frame is built
+   from 8 background-image pieces (4 corners + 4 repeating edges) instead.
+   background-image on fixed elements works consistently everywhere. */
+.pf-corner, .pf-edge{
+  position: absolute;
+  background-repeat: no-repeat;
+}
+.pf-corner{
+  width: var(--frame-w);
+  height: var(--frame-w);
+  background-size: 100% 100%;
+}
+.pf-tl{ top: 0; left: 0; background-image: url("/files/border-frame-tl.png?v=1"); }
+.pf-tr{ top: 0; right: 0; background-image: url("/files/border-frame-tr.png?v=1"); }
+.pf-bl{ bottom: 0; left: 0; background-image: url("/files/border-frame-bl.png?v=1"); }
+.pf-br{ bottom: 0; right: 0; background-image: url("/files/border-frame-br.png?v=1"); }
+
+.pf-edge-top, .pf-edge-bottom{
+  left: var(--frame-w);
+  right: var(--frame-w);
+  height: var(--frame-w);
+  background-repeat: repeat-x;
+  background-size: auto var(--frame-w);
+}
+.pf-edge-top{ top: 0; background-image: url("/files/border-frame-edge-top.png?v=1"); }
+.pf-edge-bottom{ bottom: 0; background-image: url("/files/border-frame-edge-bottom.png?v=1"); }
+
+.pf-edge-left, .pf-edge-right{
+  top: var(--frame-w);
+  bottom: var(--frame-w);
+  width: var(--frame-w);
+  background-repeat: repeat-y;
+  background-size: var(--frame-w) auto;
+}
+.pf-edge-left{ left: 0; background-image: url("/files/border-frame-edge-left.png?v=1"); }
+.pf-edge-right{ right: 0; background-image: url("/files/border-frame-edge-right.png?v=1"); }
 
 /* ============================================================
    NAVBAR
